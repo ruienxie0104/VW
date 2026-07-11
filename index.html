@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>2026 Volkswagen The all-new T-Roc Roadshow</title>
+    <!-- Tailwind CSS (CDN for development) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        vw: {
+                            blue: '#1a1040',
+                            red: '#c8401e',
+                            yellow: '#e8a000',
+                            gray: '#646e8c'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                        heading: ['"Barlow Condensed"', 'sans-serif'],
+                        vwtitle: ['"Syncopate"', '"Noto Sans TC"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-black text-white overflow-hidden">
+    <!-- App Container (Mobile view centered on desktop) -->
+    <div id="app" class="app-container relative h-[100dvh] w-full overflow-hidden bg-vw-blue">
+        
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0 page-bg-container">
+            <img src="assets/background.png" alt="Background" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/40"></div>
+        </div>
+
+        <!-- Common Header Logo Area -->
+        <header id="common-header" class="absolute top-0 left-0 w-full z-20 p-6 flex justify-between items-start hidden fade-in">
+            <div class="flex flex-col mt-2">
+                <div class="font-vw-title text-[15px] tracking-[0.05em] leading-[1.2]">
+                    <span class="text-outline block">THE ALL-NEW</span>
+                    <span class="text-white block mt-0.5">T-ROC</span>
+                </div>
+                <div class="text-[10px] text-gray-300 mt-2.5 tracking-[0.4em] font-light mr-[-0.4em]">
+                    魅力&nbsp;|&nbsp;自成焦點
+                </div>
+            </div>
+            <img src="assets/logo.svg" alt="Volkswagen" class="w-[42px] h-[42px]">
+        </header>
+
+        <!-- Section 0: Landing Page -->
+        <section id="page-landing" class="page-section hidden z-10">
+            <!-- Absolute Top Right Small Logo -->
+            <div class="absolute top-8 right-8 z-20">
+                <img src="assets/logo.svg" alt="Volkswagen" class="w-[42px] h-[42px]">
+            </div>
+
+            <div class="absolute inset-0 flex flex-col justify-between p-8 pt-[20dvh] pb-16">
+                <!-- Header part for landing -->
+                <div>
+                    <div class="font-vw-title text-[23px] sm:text-[25px] tracking-[0.05em] leading-[1.25]">
+                        <span class="text-outline block">THE ALL-NEW</span>
+                        <span class="text-white block mt-2">T-ROC</span>
+                    </div>
+                    <div class="text-[11px] text-gray-300 mt-4.5 tracking-[0.45em] font-light mr-[-0.45em]">
+                        魅力&nbsp;|&nbsp;自成焦點
+                    </div>
+                </div>
+
+                <!-- Middle Text content -->
+                <div class="my-auto py-8">
+                    <p class="text-[14px] leading-[2.1] font-light text-white/90">
+                        The all-new T-Roc 融合福斯獨特魅力與德製工藝<br>
+                        打造兼具俐落有型的設計、智慧升級的科技<br>
+                        以及更從容舒適車身尺度的全新世代代表作
+                    </p>
+                    <p class="text-[14px] leading-[2.1] font-light text-white/90 mt-8">
+                        準備好探索 The all-new T-Roc 的獨特魅力
+                    </p>
+                </div>
+
+                <!-- Button container at the bottom -->
+                <div class="w-full mb-2">
+                    <button id="btn-start" class="btn-start-container focus:outline-none w-full">
+                        <span class="btn-start-label">立即開始</span>
+                        <span class="btn-start-line"></span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Section 1: Tech & Comfort -->
+        <section id="page-tech" class="page-section hidden z-10 flex flex-col justify-between pt-[18dvh] pb-16">
+            <!-- Passcode overlay modal -->
+            <div id="passcode-overlay" class="absolute inset-0 bg-black/70 backdrop-blur-[2px] z-20 flex flex-col items-center justify-center hidden">
+                <div class="w-full max-w-[280px] text-center px-4 mb-20">
+                    <h3 class="text-lg font-medium text-white mb-4 tracking-wider">輸入通關密碼</h3>
+                    <input type="text" id="passcode-input" class="w-full h-12 bg-white/95 text-black text-center text-xl font-bold tracking-[0.2em] rounded shadow-lg focus:outline-none" autocomplete="off" placeholder="••••">
+                    <p id="passcode-error" class="text-red-400 text-sm mt-3 opacity-0 transition-opacity">通關密碼錯誤，請洽現場工作人員</p>
+                </div>
+            </div>
+
+            <div class="text-center px-6">
+                <h1 class="text-[24px] sm:text-[26px] font-bold mb-5 tracking-wider text-white">空間升級 │ 舒適隨行</h1>
+                <div class="space-y-1.5 text-[14px] font-light text-white/80">
+                    <p>體驗 The all-new T-Roc 全新升級的大空間</p>
+                    <p class="text-vw-yellow font-medium">請聽工作人員解說後，由工作人員輸入解鎖密碼</p>
+                    <p>繼續完成你的專屬魅力檔案</p>
+                </div>
+            </div>
+            
+            <div class="w-full my-auto flex items-center justify-center overflow-hidden">
+                <img src="assets/interior.jpg" alt="T-Roc Interior" class="w-full object-cover aspect-[16/10]">
+            </div>
+
+            <div class="relative z-30 flex justify-center space-x-20 items-center w-full px-8">
+                <button class="btn-circle-prev btn-nav-back flex items-center justify-center shadow-lg">
+                    <span class="text-2xl leading-none">&larr;</span>
+                </button>
+                <button class="btn-circle-next btn-nav-forward flex items-center justify-center shadow-[0_0_15px_rgba(200,64,30,0.4)]">
+                    <span class="text-2xl leading-none">&rarr;</span>
+                </button>
+            </div>
+        </section>
+
+
+
+        <!-- Section 3: Design & Quality (Camera) -->
+        <section id="page-design" class="page-section hidden z-10 flex flex-col justify-between pt-[18dvh] pb-16">
+            <div class="text-center px-6">
+                <h1 class="text-[24px] sm:text-[26px] font-bold mb-5 tracking-wider text-white">德式美學 │ 焦點出色</h1>
+                <p class="text-[14px] font-light leading-relaxed text-white/80">
+                    站上「最佳拍照點」，由工作人員為您拍攝，<br>
+                    與 The all-new T-Roc 一起捕捉每一面都出色的你
+                </p>
+            </div>
+
+            <!-- Viewfinder Camera Frame -->
+            <div class="relative w-full max-w-[280px] aspect-[3/4] mx-auto my-auto shadow-2xl flex items-center justify-center p-[6px]">
+                <!-- Viewfinder Corner Brackets -->
+                <div class="absolute top-0 left-0 w-5 h-5 border-t border-l border-white/60"></div>
+                <div class="absolute top-0 right-0 w-5 h-5 border-t border-r border-white/60"></div>
+                <div class="absolute bottom-0 left-0 w-5 h-5 border-b border-l border-white/60"></div>
+                <div class="absolute bottom-0 right-0 w-5 h-5 border-b border-r border-white/60"></div>
+
+                <!-- Camera viewport wrapper -->
+                <div class="w-full h-full relative overflow-hidden bg-black/40 rounded-[2px]">
+                    <video id="camera-video" class="w-full h-full object-cover" autoplay playsinline></video>
+                    <img id="camera-preview" class="w-full h-full object-cover hidden" alt="Photo Preview">
+                    <canvas id="camera-canvas" class="hidden"></canvas>
+                    
+                    <div id="camera-loading" class="absolute inset-0 flex flex-col items-center justify-center bg-black/70">
+                        <div class="w-8 h-8 border-4 border-white/20 border-t-white rounded-full animate-spin mb-3"></div>
+                        <p class="text-sm">啟動相機中...</p>
+                    </div>
+
+                    <div id="camera-fallback" class="absolute inset-0 flex flex-col items-center justify-center bg-black/80 hidden p-6 text-center">
+                        <p class="mb-4 text-sm text-white/90">無法存取相機，請上傳照片</p>
+                        <label class="px-5 py-2.5 bg-white/10 border border-white/40 rounded cursor-pointer hover:bg-white hover:text-black transition text-sm">
+                            選擇照片
+                            <input type="file" id="fallback-upload" accept="image/*" class="hidden">
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action buttons at the bottom -->
+            <div class="w-full px-8">
+                <!-- Action bar (Video mode) -->
+                <div id="camera-actions-video" class="flex justify-center space-x-10 items-center w-full">
+                    <button class="btn-circle-prev btn-nav-back flex items-center justify-center shadow-lg">
+                        <span class="text-2xl leading-none">&larr;</span>
+                    </button>
+                    <button id="btn-shutter" class="w-20 h-20 rounded-full border-4 border-white/40 flex items-center justify-center transition active:scale-95 focus:outline-none shadow-lg">
+                        <div class="w-14 h-14 rounded-full bg-white"></div>
+                    </button>
+                    <button id="btn-switch-camera" class="btn-circle-prev flex items-center justify-center shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                        </svg>
+                    </button>
+                </div>
+                <!-- Action bar (Preview mode) -->
+                <div id="camera-actions-preview" class="flex justify-center space-x-20 items-center w-full hidden">
+                    <button id="btn-retake" class="btn-circle-prev flex items-center justify-center shadow-lg">
+                        <span class="text-2xl leading-none">&larr;</span>
+                    </button>
+                    <button id="btn-photo-next" class="btn-circle-next flex items-center justify-center shadow-[0_0_15px_rgba(200,64,30,0.4)]">
+                        <span class="text-2xl leading-none">&rarr;</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Section 4: User Form -->
+        <section id="page-form" class="page-section hidden z-10 flex flex-col justify-between pt-[18dvh] pb-16 overflow-y-auto">
+            <div class="px-6 w-full">
+                <h1 class="text-[24px] sm:text-[26px] font-bold mb-8 tracking-wider text-center text-white">請填寫您的基本資料</h1>
+                
+                <form id="user-data-form" class="space-y-5">
+                    <div>
+                        <label class="form-label block text-sm mb-1 ml-1 text-white/90">姓名</label>
+                        <input type="text" id="form-name" class="form-input w-full px-4 py-3 rounded text-black text-lg shadow-sm" placeholder="劉品嘉" required>
+                        <p class="form-error text-red-400 text-xs mt-1 ml-1 hidden">請輸入姓名</p>
+                    </div>
+
+                    <div>
+                        <label class="form-label block text-sm mb-1 ml-1 text-white/90">出生年月日</label>
+                        <input type="text" id="form-dob" class="form-input w-full px-4 py-3 rounded text-black text-lg shadow-sm" placeholder="1990 / 01 / 01" required>
+                        <p class="form-error text-red-400 text-xs mt-1 ml-1 hidden">請輸入正確格式 (YYYY / MM / DD)</p>
+                    </div>
+
+                    <div>
+                        <label class="form-label block text-sm mb-1 ml-1 text-white/90">聯絡電話</label>
+                        <input type="tel" id="form-phone" class="form-input w-full px-4 py-3 rounded text-black text-lg shadow-sm" placeholder="0912-345-678" required>
+                        <p class="form-error text-red-400 text-xs mt-1 ml-1 hidden">請輸入正確手機號碼格式</p>
+                    </div>
+
+                    <div>
+                        <label class="form-label block text-sm mb-1 ml-1 text-white/90">希望聯繫的福斯授權經銷商</label>
+                        <div class="relative">
+                            <select id="form-dealer" class="form-input w-full px-4 py-3 pr-10 rounded text-black text-base shadow-sm appearance-none bg-white" required>
+                                <option value="" disabled selected>請選擇授權經銷商</option>
+                                <option value="太古內湖服務中心（台北市內湖區舊宗路一段 285 號）">太古內湖服務中心（台北市內湖區舊宗路一段 285 號）</option>
+                                <option value="新北福斯授權經銷商">新北福斯授權經銷商</option>
+                                <option value="桃園福斯授權經銷商">桃園福斯授權經銷商</option>
+                                <option value="新竹福斯授權經銷商">新竹福斯授權經銷商</option>
+                                <option value="台中福斯授權經銷商">台中福斯授權經銷商</option>
+                                <option value="台南福斯授權經銷商">台南福斯授權經銷商</option>
+                                <option value="高雄福斯授權經銷商">高雄福斯授權經銷商</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-gray-700">
+                                <svg class="fill-current h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                            </div>
+                        </div>
+                        <p class="form-error text-red-400 text-xs mt-1 ml-1 hidden">請選擇經銷商</p>
+                    </div>
+
+                    <div class="pt-2">
+                        <label class="form-label block text-sm mb-3 ml-1 text-white/90">是否願意接收 The all-new T-Roc 最新資訊</label>
+                        <div class="flex space-x-12 ml-1">
+                            <label class="flex items-center cursor-pointer group">
+                                <input type="radio" name="subscribe" value="yes" class="hidden peer">
+                                <div class="custom-radio">
+                                    <div class="custom-radio-inner"></div>
+                                </div>
+                                <span class="text-base text-white/90">是</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer group">
+                                <input type="radio" name="subscribe" value="no" class="hidden peer">
+                                <div class="custom-radio">
+                                    <div class="custom-radio-inner"></div>
+                                </div>
+                                <span class="text-base text-white/90">否</span>
+                            </label>
+                        </div>
+                        <p class="form-error text-red-400 text-xs mt-2 ml-1 hidden" id="subscribe-error">請選擇是否接收資訊</p>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Action buttons at the bottom (Centered) -->
+            <div class="flex justify-center space-x-20 items-center w-full px-8 mt-8">
+                <button class="btn-circle-prev btn-nav-back flex items-center justify-center shadow-lg">
+                    <span class="text-2xl leading-none">&larr;</span>
+                </button>
+                <button id="btn-submit-form" class="btn-circle-next flex items-center justify-center shadow-[0_0_15px_rgba(200,64,30,0.4)]">
+                    <span class="text-2xl leading-none">&rarr;</span>
+                </button>
+            </div>
+        </section>
+
+
+        <!-- Section 5: Poster Result (Scrollable) -->
+        <section id="page-poster" class="page-section hidden z-10 flex flex-col pt-[14dvh] bg-black/65 backdrop-blur-[2px] overflow-y-auto">
+            
+            <div class="flex-grow flex flex-col items-center justify-center w-full px-6">
+                <!-- Generating State -->
+                <div id="poster-generating" class="flex flex-col items-center justify-center h-64 w-full">
+                    <div class="w-10 h-10 border-4 border-white/20 border-t-vw-yellow rounded-full animate-spin mb-4"></div>
+                    <p id="generating-text" class="text-sm font-medium tracking-wide text-center px-4">正在生成您的專屬魅力檔案...</p>
+                </div>
+                
+                <!-- Poster Canvas & Preview (Hidden initially) -->
+                <div id="poster-container" class="hidden w-full max-w-[310px] shadow-[0_20px_50px_rgba(0,0,0,0.8)] border-4 border-white/20 relative">
+                    <img id="poster-preview-img" class="w-full h-auto" alt="專屬海報">
+                </div>
+                <!-- Hidden canvas for actual drawing (1080x1920) -->
+                <canvas id="poster-canvas" width="1080" height="1920" class="hidden"></canvas>
+            </div>
+            <!-- Clean Double Action Buttons (No text labels, centered) -->
+            <div class="flex justify-center space-x-20 items-center w-full px-8 mt-8 pb-12">
+                <button id="btn-download" class="btn-circle-prev flex items-center justify-center shadow-lg">
+                    <!-- Download Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                </button>
+                <button id="btn-share" class="btn-circle-prev flex items-center justify-center shadow-lg">
+                    <!-- Instagram-style Paper Airplane Share Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" style="transform: rotate(45deg); margin-bottom: 2px; margin-right: 2px;">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Toast notification -->
+            <div id="toast-message" class="absolute top-10 left-1/2 transform -translate-x-1/2 bg-white/90 text-black px-6 py-3 rounded shadow-lg text-sm font-medium opacity-0 transition-opacity pointer-events-none z-50">
+                Notification
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/app.js?v=8"></script>
+    <script src="js/camera.js?v=8"></script>
+    <script src="js/poster.js?v=8"></script>
+</body>
+</html>
