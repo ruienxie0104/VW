@@ -321,24 +321,39 @@ function bindPosterButtons() {
                     showToast('圖片生成失敗，請重試');
                     return;
                 }
-                var url = URL.createObjectURL(blob);
-                var a = document.createElement('a');
-                a.style.display = 'none';
-                a.href = url;
                 
                 var state = window.getAppState();
                 var userName = state.formData ? state.formData.name : 'VIP';
-                a.download = 'The_all-new_T-Roc_' + userName + '.jpg';
+                var fileName = 'The_all-new_T-Roc_' + userName + '.jpg';
                 
-                document.body.appendChild(a);
-                a.click();
-                
-                setTimeout(function() {
-                    document.body.removeChild(a);
-                    URL.revokeObjectURL(url);
-                }, 100);
-                
-                showToast('圖片已開始下載');
+                // 檢查是否支援 Web Share API 分享檔案，以便能直接叫起手機系統的「儲存影像」
+                var file = new File([blob], fileName, { type: 'image/jpeg' });
+                if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                    navigator.share({
+                        files: [file],
+                        title: 'The all-new T-Roc 專屬海報',
+                        text: '我的專屬魅力檔案'
+                    }).catch(function(err) {
+                        console.log('分享或儲存取消/失敗:', err);
+                    });
+                } else {
+                    // Fallback to traditional download
+                    var url = URL.createObjectURL(blob);
+                    var a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url;
+                    a.download = fileName;
+                    
+                    document.body.appendChild(a);
+                    a.click();
+                    
+                    setTimeout(function() {
+                        document.body.removeChild(a);
+                        URL.revokeObjectURL(url);
+                    }, 100);
+                    
+                    showToast('圖片已下載！長按上方海報亦可直接儲存至相簿');
+                }
             }, 'image/jpeg', 0.95);
         });
     }

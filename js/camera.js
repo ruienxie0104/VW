@@ -116,6 +116,7 @@ function retakePhoto() {
 }
 
 function showPreview(dataURL) {
+    loadingEl.classList.add('hidden'); // 確保預覽時隱藏載入中動畫
     videoEl.classList.add('hidden');
     previewImg.src = dataURL;
     previewImg.classList.remove('hidden');

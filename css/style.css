@@ -171,6 +171,10 @@ body {
     color: #999;
 }
 
+.form-input.border-error {
+    border-color: #c8401e !important;
+}
+
 .form-error.show {
     display: block;
     animation: fadeIn 0.2s ease forwards;

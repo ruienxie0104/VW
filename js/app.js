@@ -1,3 +1,8 @@
+// 全域錯誤捕獲，協助在行動端與瀏覽器除錯
+window.addEventListener('error', function(e) {
+    alert('偵測到 JS 錯誤: ' + e.message + '\n檔案: ' + e.filename + '\n行號: ' + e.lineno);
+});
+
 // app.js - Main Application Logic
 
 const PASSCODE = 'TROC2026';
@@ -38,10 +43,21 @@ function initApp() {
     };
     commonHeader = document.getElementById('common-header');
 
-    loadState();
+    // 每次重新打開或刷新頁面時，清除 LocalStorage，以確保流程是全新的
+    localStorage.removeItem('vwTrocState');
     
-    // Always return to the landing page upon page refresh
-    appState.currentStep = 0;
+    // 重置 appState 為初始狀態
+    appState = {
+        entryType: 'tech', 
+        currentStep: 0,
+        techCompleted: false,
+        designCompleted: false,
+        passcodeVerified: false,
+        capturedPhoto: null,
+        formData: null,
+        posterGenerated: false
+    };
+    saveState();
     
     // Parse URL query string for entry type
     const urlParams = new URLSearchParams(window.location.search);
@@ -102,7 +118,7 @@ function showPage(stepIndex) {
     }
     
     // Handle Common Header visibility
-    if (pageId === 'landing') {
+    if (pageId === 'landing' || pageId === 'form' || pageId === 'poster') {
         commonHeader.classList.add('hidden');
     } else {
         commonHeader.classList.remove('hidden');
@@ -389,16 +405,21 @@ function validateForm() {
 }
 
 function showError(element, show) {
-    const errEl = element.parentElement.querySelector('.form-error');
+    // 尋找鄰近的 .form-error：先從 parent 找，如果找不到，就到 parent 的 parent 找
+    let errEl = element.parentElement.querySelector('.form-error');
+    if (!errEl && element.parentElement.parentElement) {
+        errEl = element.parentElement.parentElement.querySelector('.form-error');
+    }
+    
     if (errEl) {
         if (show) {
             errEl.classList.remove('hidden');
             errEl.classList.add('show');
-            element.classList.add('border-red-500');
+            element.classList.add('border-error');
         } else {
             errEl.classList.add('hidden');
             errEl.classList.remove('show');
-            element.classList.remove('border-red-500');
+            element.classList.remove('border-error');
         }
     }
 }
