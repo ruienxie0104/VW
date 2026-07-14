@@ -23,8 +23,8 @@ let appState = {
 // 'landing' is always step 0
 // 'poster' is always the last step
 const FLOWS = {
-    tech: ['landing', 'tech', 'design', 'form', 'poster'],
-    design: ['landing', 'design', 'tech', 'form', 'poster']
+    tech: ['landing', 'tech', 'design', 'form', 'poster'], // A 流程
+    design: ['landing', 'design', 'landing', 'tech', 'form', 'poster'] // B 流程
 };
 
 let currentFlow = [];
@@ -120,6 +120,16 @@ function showPage(stepIndex) {
     // Handle Common Header visibility
     if (pageId === 'landing' || pageId === 'form' || pageId === 'poster') {
         commonHeader.classList.add('hidden');
+        if (pageId === 'landing') {
+            const btnStartLabel = document.querySelector('#btn-start .btn-start-label');
+            if (btnStartLabel) {
+                if (appState.entryType === 'design' && stepIndex === 2) {
+                    btnStartLabel.innerText = '繼續體驗';
+                } else {
+                    btnStartLabel.innerText = '立即開始';
+                }
+            }
+        }
     } else {
         commonHeader.classList.remove('hidden');
     }
