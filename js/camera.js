@@ -46,6 +46,13 @@ async function startCamera() {
         currentStream = await navigator.mediaDevices.getUserMedia(constraints);
         videoEl.srcObject = currentStream;
         
+        // 根據鏡頭模式決定是否啟用鏡像（自拍鏡頭才鏡像）
+        if (currentFacingMode === 'user') {
+            videoEl.classList.add('mirror');
+        } else {
+            videoEl.classList.remove('mirror');
+        }
+        
         // Wait for video to be ready
         videoEl.onloadedmetadata = () => {
             videoEl.play();

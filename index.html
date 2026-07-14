@@ -32,16 +32,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=9">
 </head>
 <body class="bg-black text-white overflow-hidden">
+    <!-- Font Preload Helper -->
+    <div style="font-family: 'VWProductFont'; opacity: 0; position: absolute; pointer-events: none; user-select: none; width: 0; height: 0; overflow: hidden;">THE ALL-NEW T-ROC</div>
+
     <!-- App Container (Mobile view centered on desktop) -->
     <div id="app" class="app-container relative h-[100dvh] w-full overflow-hidden bg-vw-blue">
         
         <!-- Background Image with Overlay -->
         <div class="absolute inset-0 z-0 page-bg-container">
             <img src="assets/background.png" alt="Background" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-black/40"></div>
         </div>
 
         <!-- Common Header Logo Area -->
@@ -146,8 +148,11 @@
                 </p>
             </div>
 
+            <!-- Spacing to prevent overlay on mobile -->
+            <div class="h-7 sm:h-16 flex-shrink-0"></div>
+
             <!-- Viewfinder Camera Frame -->
-            <div class="relative w-full max-w-[280px] aspect-[3/4] mx-auto my-auto shadow-2xl flex items-center justify-center p-[6px]">
+            <div class="relative w-full max-w-[240px] aspect-[3/4] mx-auto my-auto shadow-2xl flex items-center justify-center p-[6px]">
                 <!-- Viewfinder Corner Brackets -->
                 <div class="absolute top-0 left-0 w-5 h-5 border-t border-l border-white/60"></div>
                 <div class="absolute top-0 right-0 w-5 h-5 border-t border-r border-white/60"></div>
@@ -176,7 +181,7 @@
             </div>
 
             <!-- Action buttons at the bottom -->
-            <div class="w-full px-8">
+            <div class="w-full px-8 mt-12">
                 <!-- Action bar (Video mode) -->
                 <div id="camera-actions-video" class="flex justify-center space-x-10 items-center w-full">
                     <button class="btn-circle-prev btn-nav-back flex items-center justify-center shadow-lg">
@@ -204,9 +209,9 @@
         </section>
 
 
-        <section id="page-form" class="page-section hidden z-10 flex flex-col justify-between pt-0 pb-16 overflow-y-auto">
+        <section id="page-form" class="page-section hidden z-10 flex flex-col justify-between pt-0 pb-6 overflow-y-auto">
             <!-- Local Header that scrolls with content -->
-            <div class="w-full p-6 flex justify-between items-start">
+            <div class="w-full px-6 pt-4 pb-2 flex justify-between items-start">
                 <div class="flex flex-col mt-2 text-left">
                     <div class="font-vw-title text-[15px] tracking-[0.05em] leading-[1.2]">
                         <span class="text-outline block">THE ALL-NEW</span>
@@ -220,39 +225,55 @@
             </div>
             
             <div class="px-6 w-full">
-                <h1 class="text-[24px] sm:text-[26px] font-bold mb-8 tracking-wider text-center text-white">請填寫您的基本資料</h1>
+                <h1 class="text-[20px] font-bold mb-4 tracking-wider text-center text-white">請填寫您的基本資料</h1>
                 
-                <form id="user-data-form" class="space-y-5">
+                <form id="user-data-form" class="space-y-3.5">
                     <div>
                         <label class="form-label block text-sm mb-1 ml-1 text-white/90">姓名</label>
-                        <input type="text" id="form-name" class="form-input w-full px-4 py-3 rounded text-black text-lg shadow-sm" placeholder="劉品嘉" required>
+                        <input type="text" id="form-name" class="form-input w-full px-4 py-2.5 rounded text-black text-base shadow-sm" placeholder="王小明" required>
                         <p class="form-error text-red-400 text-xs mt-1 ml-1 hidden">請輸入姓名</p>
                     </div>
 
                     <div>
                         <label class="form-label block text-sm mb-1 ml-1 text-white/90">出生年月日</label>
-                        <input type="text" id="form-dob" class="form-input w-full px-4 py-3 rounded text-black text-lg shadow-sm" placeholder="1990 / 01 / 01" required>
+                        <input type="text" id="form-dob" class="form-input w-full px-4 py-2.5 rounded text-black text-base shadow-sm" placeholder="1990 / 01 / 01" required>
                         <p class="form-error text-red-400 text-xs mt-1 ml-1 hidden">請輸入正確格式 (YYYY / MM / DD)</p>
                     </div>
 
                     <div>
                         <label class="form-label block text-sm mb-1 ml-1 text-white/90">聯絡電話</label>
-                        <input type="tel" id="form-phone" class="form-input w-full px-4 py-3 rounded text-black text-lg shadow-sm" placeholder="0912-345-678" required>
+                        <input type="tel" id="form-phone" class="form-input w-full px-4 py-2.5 rounded text-black text-base shadow-sm" placeholder="0912-345-678" required>
                         <p class="form-error text-red-400 text-xs mt-1 ml-1 hidden">請輸入正確手機號碼格式</p>
                     </div>
 
                     <div>
                         <label class="form-label block text-sm mb-1 ml-1 text-white/90">希望聯繫的福斯授權經銷商</label>
                         <div class="relative">
-                            <select id="form-dealer" class="form-input w-full px-4 py-3 pr-10 rounded text-black text-base shadow-sm appearance-none bg-white" required>
+                            <select id="form-dealer" class="form-input w-full px-4 py-2.5 pr-10 rounded text-black text-base shadow-sm appearance-none bg-white" required>
                                 <option value="" disabled selected>請選擇授權經銷商</option>
-                                <option value="太古內湖服務中心（台北市內湖區舊宗路一段 285 號）">太古內湖服務中心（台北市內湖區舊宗路一段 285 號）</option>
-                                <option value="新北福斯授權經銷商">新北福斯授權經銷商</option>
-                                <option value="桃園福斯授權經銷商">桃園福斯授權經銷商</option>
-                                <option value="新竹福斯授權經銷商">新竹福斯授權經銷商</option>
-                                <option value="台中福斯授權經銷商">台中福斯授權經銷商</option>
-                                <option value="台南福斯授權經銷商">台南福斯授權經銷商</option>
-                                <option value="高雄福斯授權經銷商">高雄福斯授權經銷商</option>
+                                <option value="台北北投太古展示中心">台北北投太古展示中心</option>
+                                <option value="台北內湖太古展示中心">台北內湖太古展示中心</option>
+                                <option value="新北板橋鉅賦展示中心">新北板橋鉅賦展示中心</option>
+                                <option value="新北中和鉅賦展示中心">新北中和鉅賦展示中心</option>
+                                <option value="新北新莊鉅賦展示中心">新北新莊鉅賦展示中心</option>
+                                <option value="新北林口鉅賦展示中心">新北林口鉅賦展示中心</option>
+                                <option value="桃園璿豐展示中心">桃園璿豐展示中心</option>
+                                <option value="桃園中壢璿豐展示中心">桃園中壢璿豐展示中心</option>
+                                <option value="新竹竹北揚昌展示中心">新竹竹北揚昌展示中心</option>
+                                <option value="新竹揚昌展示中心">新竹揚昌展示中心</option>
+                                <option value="台中五權太古展示中心">台中五權太古展示中心</option>
+                                <option value="台中櫻花太古展示中心">台中櫻花太古展示中心</option>
+                                <option value="台中潭子太古展示中心">台中潭子太古展示中心</option>
+                                <option value="彰化宗承展示中心">彰化宗承展示中心</option>
+                                <option value="雲林宗承展示中心">雲林宗承展示中心</option>
+                                <option value="嘉義宗承展示中心">嘉義宗承展示中心</option>
+                                <option value="台南永康銘峰展示中心">台南永康銘峰展示中心</option>
+                                <option value="台南中華銘峰展示中心">台南中華銘峰展示中心</option>
+                                <option value="高雄澄清太古展示中心">高雄澄清太古展示中心</option>
+                                <option value="高雄巨蛋太古展示中心">高雄巨蛋太古展示中心</option>
+                                <option value="屏東太古展示中心">屏東太古展示中心</option>
+                                <option value="宜蘭進東展示中心">宜蘭進東展示中心</option>
+                                <option value="花蓮進東展示中心">花蓮進東展示中心</option>
                             </select>
                             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-gray-700">
                                 <svg class="fill-current h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -261,8 +282,8 @@
                         <p class="form-error text-red-400 text-xs mt-1 ml-1 hidden">請選擇經銷商</p>
                     </div>
 
-                    <div class="pt-2">
-                        <label class="form-label block text-sm mb-3 ml-1 text-white/90">是否願意接收 The all-new T-Roc 最新資訊</label>
+                    <div>
+                        <label class="form-label block text-sm mb-1.5 ml-1 text-white/90">是否願意接收 The all-new T-Roc 最新資訊</label>
                         <div class="flex space-x-12 ml-1">
                             <label class="flex items-center cursor-pointer group">
                                 <input type="radio" name="subscribe" value="yes" class="hidden peer">
@@ -285,7 +306,7 @@
             </div>
 
             <!-- Action buttons at the bottom (Centered) -->
-            <div class="flex justify-center space-x-20 items-center w-full px-8 mt-8">
+            <div class="flex justify-center space-x-20 items-center w-full px-8 mt-4">
                 <button class="btn-circle-prev btn-nav-back flex items-center justify-center shadow-lg">
                     <span class="text-2xl leading-none">&larr;</span>
                 </button>
@@ -297,7 +318,7 @@
 
 
         <!-- Section 5: Poster Result (Scrollable) -->
-        <section id="page-poster" class="page-section hidden z-10 flex flex-col pt-0 bg-black/65 backdrop-blur-[2px] overflow-y-auto">
+        <section id="page-poster" class="page-section hidden z-10 flex flex-col pt-0 overflow-y-auto">
             <!-- Local Header that scrolls with content -->
             <div class="w-full p-6 flex justify-between items-start">
                 <div class="flex flex-col mt-2 text-left">
@@ -351,8 +372,8 @@
     </div>
 
     <!-- Scripts -->
-    <script src="js/app.js?v=8"></script>
-    <script src="js/camera.js?v=8"></script>
-    <script src="js/poster.js?v=8"></script>
+    <script src="js/app.js?v=9"></script>
+    <script src="js/camera.js?v=9"></script>
+    <script src="js/poster.js?v=9"></script>
 </body>
 </html>

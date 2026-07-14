@@ -147,7 +147,7 @@ async function generatePoster(state, genText) {
     // 5. 繪製標題文字 (壓在照片上方，創造設計感)
     updateStatus('繪製標題與文字中...');
     ctx.fillStyle = '#ffffff';
-    ctx.font = 'bold 68px "Syncopate", sans-serif';
+    ctx.font = '68px "VWProductFont", sans-serif';
     
     try {
         if ('letterSpacing' in ctx) {
@@ -184,8 +184,8 @@ async function generatePoster(state, genText) {
     updateStatus('繪製底版與介紹...');
     // 不繪製黑色半透明底版，保持與設計圖一致的通透感
     
-    // 金黃色標題
-    ctx.fillStyle = '#e8a000';
+    // 標題顏色改為 #c8bb9b
+    ctx.fillStyle = '#c8bb9b';
     ctx.font = 'bold 45px "Noto Sans TC", sans-serif';
     ctx.fillText('T-Roc 小檔案', 120, 1180);
     
@@ -198,7 +198,7 @@ async function generatePoster(state, genText) {
     ctx.stroke();
     
     // 特色介紹
-    var col1X = 120, col2X = 550;
+    var col1X = 100, col2X = 590;
     var featureY = 1300;
     
     var features = [
@@ -214,13 +214,13 @@ async function generatePoster(state, genText) {
         var fx = f.col === 1 ? col1X : col2X;
         var fy = f.col === 1 ? featureY : featureY - 140;
         
-        ctx.fillStyle = '#e8a000';
+        ctx.fillStyle = '#c8bb9b';
         ctx.font = 'bold 28px "Noto Sans TC", sans-serif';
         ctx.fillText(f.title, fx, fy);
         
         ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
-        ctx.font = '22px "Noto Sans TC", sans-serif';
-        wrapText(ctx, f.desc, fx, fy + 40, 380, 32);
+        ctx.font = '18px "Noto Sans TC", sans-serif';
+        wrapText(ctx, f.desc, fx, fy + 40, 470, 32);
         
         if (f.col === 1 && fi < features.length - 1) {
             featureY += 140;
