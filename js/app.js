@@ -5,7 +5,7 @@ window.addEventListener('error', function(e) {
 
 // app.js - Main Application Logic
 
-const PASSCODE = 'TROC2026';
+const PASSCODE = 'T-ROC';
 
 // State Management
 let appState = {

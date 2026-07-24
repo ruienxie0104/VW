@@ -20,14 +20,14 @@ body {
 
 /* Custom font styles matching brand identity */
 .font-vw-title {
-    font-family: 'Syncopate', 'Noto Sans TC', sans-serif;
-    font-weight: 700;
+    font-family: 'VWProductFont', 'Syncopate', sans-serif;
+    font-weight: normal;
 }
 
 .text-outline {
     color: transparent;
-    -webkit-text-stroke: 1.2px #ffffff;
-    text-stroke: 1.2px #ffffff;
+    -webkit-text-stroke: 1px #ffffff;
+    text-stroke: 1px #ffffff;
 }
 
 
@@ -133,15 +133,17 @@ body {
     width: 56px;
     height: 56px;
     border-radius: 50%;
-    background-color: #e04f2b;
+    background-color: rgba(255, 255, 255, 0.28);
     color: white;
-    border: none;
+    border: 1px solid rgba(255, 255, 255, 0.45);
     transition: transform 0.1s, background-color 0.2s;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
 }
 
 .btn-circle-next:active {
     transform: scale(0.95);
-    background-color: #c8401e;
+    background-color: rgba(255, 255, 255, 0.45);
 }
 
 .btn-shutter {

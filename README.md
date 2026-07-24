@@ -64,7 +64,7 @@ resetApp()
 ### 修改通關密碼
 開啟 `js/app.js`，修改最上方的常數：
 ```javascript
-const PASSCODE = 'TROC2026';
+const PASSCODE = 'T-ROC';
 ```
 
 ### 修改經銷商清單

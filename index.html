@@ -21,7 +21,7 @@
                     fontFamily: {
                         sans: ['"Noto Sans TC"', 'sans-serif'],
                         heading: ['"Barlow Condensed"', 'sans-serif'],
-                        vwtitle: ['"Syncopate"', '"Noto Sans TC"', 'sans-serif']
+                        vwtitle: ['"VWProductFont"', '"Syncopate"', 'sans-serif']
                     }
                 }
             }
@@ -49,12 +49,18 @@
         <!-- Common Header Logo Area -->
         <header id="common-header" class="absolute top-0 left-0 w-full z-20 p-6 flex justify-between items-start hidden fade-in">
             <div class="flex flex-col mt-2">
-                <div class="font-vw-title text-[15px] tracking-[0.05em] leading-[1.2]">
-                    <span class="text-outline block">THE ALL-NEW</span>
-                    <span class="text-white block mt-0.5">T-ROC</span>
-                </div>
-                <div class="text-[10px] text-gray-300 mt-2.5 tracking-[0.4em] font-light mr-[-0.4em]">
-                    魅力&nbsp;|&nbsp;自成焦點
+                <div class="font-vw-title leading-[1.1] inline-block">
+                    <span class="text-outline block text-[17px] sm:text-[18px] tracking-[0.05em]">THE ALL-NEW</span>
+                    <span class="text-white block text-[17px] sm:text-[18px] tracking-[0.05em] mt-1">T-ROC</span>
+                    <div class="flex justify-between items-center text-[12px] sm:text-[13px] text-gray-300 mt-2.5 font-light">
+                        <span>魅</span>
+                        <span>力</span>
+                        <span class="font-thin text-[11px] opacity-70">|</span>
+                        <span>自</span>
+                        <span>成</span>
+                        <span>焦</span>
+                        <span>點</span>
+                    </div>
                 </div>
             </div>
             <img src="assets/logo.svg" alt="Volkswagen" class="w-[42px] h-[42px]">
@@ -70,12 +76,18 @@
             <div class="absolute inset-0 flex flex-col justify-between p-8 pt-[20dvh] pb-16">
                 <!-- Header part for landing -->
                 <div>
-                    <div class="font-vw-title text-[23px] sm:text-[25px] tracking-[0.05em] leading-[1.25]">
-                        <span class="text-outline block">THE ALL-NEW</span>
-                        <span class="text-white block mt-2">T-ROC</span>
-                    </div>
-                    <div class="text-[11px] text-gray-300 mt-4.5 tracking-[0.45em] font-light mr-[-0.45em]">
-                        魅力&nbsp;|&nbsp;自成焦點
+                    <div class="font-vw-title leading-[1.1] inline-block">
+                        <span class="text-outline block text-[24px] sm:text-[26px] tracking-[0.05em]">THE ALL-NEW</span>
+                        <span class="text-white block text-[24px] sm:text-[26px] tracking-[0.05em] mt-1.5">T-ROC</span>
+                        <div class="flex justify-between items-center text-[15px] sm:text-[17px] text-gray-300 mt-3 font-light">
+                            <span>魅</span>
+                            <span>力</span>
+                            <span class="font-thin text-[14px] opacity-70">|</span>
+                            <span>自</span>
+                            <span>成</span>
+                            <span>焦</span>
+                            <span>點</span>
+                        </div>
                     </div>
                 </div>
 
@@ -126,11 +138,11 @@
                 <img src="assets/interior.jpg" alt="T-Roc Interior" class="w-full object-cover aspect-[16/10]">
             </div>
 
-            <div class="relative z-30 flex justify-center space-x-20 items-center w-full px-8">
+            <div class="relative z-30 flex justify-between items-center w-full max-w-[280px] mx-auto px-4">
                 <button class="btn-circle-prev btn-nav-back flex items-center justify-center shadow-lg">
                     <span class="text-2xl leading-none">&larr;</span>
                 </button>
-                <button class="btn-circle-next btn-nav-forward flex items-center justify-center shadow-[0_0_15px_rgba(200,64,30,0.4)]">
+                <button class="btn-circle-next btn-nav-forward flex items-center justify-center shadow-lg">
                     <span class="text-2xl leading-none">&rarr;</span>
                 </button>
             </div>
@@ -139,7 +151,7 @@
 
 
         <!-- Section 3: Design & Quality (Camera) -->
-        <section id="page-design" class="page-section hidden z-10 flex flex-col justify-between pt-[18dvh] pb-16">
+        <section id="page-design" class="page-section hidden z-10 flex flex-col justify-between pt-[17dvh] pb-12">
             <div class="text-center px-6">
                 <h1 class="text-[24px] sm:text-[26px] font-bold mb-5 tracking-wider text-white">德式美學 │ 焦點出色</h1>
                 <p class="text-[14px] font-light leading-relaxed text-white/80">
@@ -149,7 +161,7 @@
             </div>
 
             <!-- Spacing to prevent overlay on mobile -->
-            <div class="h-7 sm:h-16 flex-shrink-0"></div>
+            <div class="h-6 sm:h-12 flex-shrink-0"></div>
 
             <!-- Viewfinder Camera Frame -->
             <div class="relative w-full max-w-[240px] aspect-[3/4] mx-auto my-auto shadow-2xl flex items-center justify-center p-[6px]">
@@ -181,14 +193,14 @@
             </div>
 
             <!-- Action buttons at the bottom -->
-            <div class="w-full px-8 mt-12">
+            <div class="w-full px-8 mb-2">
                 <!-- Action bar (Video mode) -->
-                <div id="camera-actions-video" class="flex justify-center space-x-10 items-center w-full">
+                <div id="camera-actions-video" class="flex justify-center space-x-8 items-center w-full">
                     <button class="btn-circle-prev btn-nav-back flex items-center justify-center shadow-lg">
                         <span class="text-2xl leading-none">&larr;</span>
                     </button>
-                    <button id="btn-shutter" class="w-20 h-20 rounded-full border-4 border-white/40 flex items-center justify-center transition active:scale-95 focus:outline-none shadow-lg">
-                        <div class="w-14 h-14 rounded-full bg-white"></div>
+                    <button id="btn-shutter" class="w-18 h-18 sm:w-20 sm:h-20 rounded-full border-4 border-white/40 flex items-center justify-center transition active:scale-95 focus:outline-none shadow-lg">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white"></div>
                     </button>
                     <button id="btn-switch-camera" class="btn-circle-prev flex items-center justify-center shadow-lg">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -197,11 +209,11 @@
                     </button>
                 </div>
                 <!-- Action bar (Preview mode) -->
-                <div id="camera-actions-preview" class="flex justify-center space-x-20 items-center w-full hidden">
+                <div id="camera-actions-preview" class="flex justify-between items-center w-full max-w-[280px] mx-auto px-4 hidden">
                     <button id="btn-retake" class="btn-circle-prev flex items-center justify-center shadow-lg">
                         <span class="text-2xl leading-none">&larr;</span>
                     </button>
-                    <button id="btn-photo-next" class="btn-circle-next flex items-center justify-center shadow-[0_0_15px_rgba(200,64,30,0.4)]">
+                    <button id="btn-photo-next" class="btn-circle-next flex items-center justify-center shadow-lg">
                         <span class="text-2xl leading-none">&rarr;</span>
                     </button>
                 </div>
@@ -213,12 +225,18 @@
             <!-- Local Header that scrolls with content -->
             <div class="w-full px-6 pt-4 pb-2 flex justify-between items-start">
                 <div class="flex flex-col mt-2 text-left">
-                    <div class="font-vw-title text-[15px] tracking-[0.05em] leading-[1.2]">
-                        <span class="text-outline block">THE ALL-NEW</span>
-                        <span class="text-white block mt-0.5">T-ROC</span>
-                    </div>
-                    <div class="text-[10px] text-gray-300 mt-2.5 tracking-[0.4em] font-light mr-[-0.4em]">
-                        魅力&nbsp;|&nbsp;自成焦點
+                    <div class="font-vw-title leading-[1.1] inline-block">
+                        <span class="text-outline block text-[17px] sm:text-[18px] tracking-[0.05em]">THE ALL-NEW</span>
+                        <span class="text-white block text-[17px] sm:text-[18px] tracking-[0.05em] mt-1">T-ROC</span>
+                        <div class="flex justify-between items-center text-[12px] sm:text-[13px] text-gray-300 mt-2.5 font-light">
+                            <span>魅</span>
+                            <span>力</span>
+                            <span class="font-thin text-[11px] opacity-70">|</span>
+                            <span>自</span>
+                            <span>成</span>
+                            <span>焦</span>
+                            <span>點</span>
+                        </div>
                     </div>
                 </div>
                 <img src="assets/logo.svg" alt="Volkswagen" class="w-[42px] h-[42px]">
@@ -322,12 +340,18 @@
             <!-- Local Header that scrolls with content -->
             <div class="w-full p-6 flex justify-between items-start">
                 <div class="flex flex-col mt-2 text-left">
-                    <div class="font-vw-title text-[15px] tracking-[0.05em] leading-[1.2]">
-                        <span class="text-outline block">THE ALL-NEW</span>
-                        <span class="text-white block mt-0.5">T-ROC</span>
-                    </div>
-                    <div class="text-[10px] text-gray-300 mt-2.5 tracking-[0.4em] font-light mr-[-0.4em]">
-                        魅力&nbsp;|&nbsp;自成焦點
+                    <div class="font-vw-title leading-[1.1] inline-block">
+                        <span class="text-outline block text-[17px] sm:text-[18px] tracking-[0.05em]">THE ALL-NEW</span>
+                        <span class="text-white block text-[17px] sm:text-[18px] tracking-[0.05em] mt-1">T-ROC</span>
+                        <div class="flex justify-between items-center text-[12px] sm:text-[13px] text-gray-300 mt-2.5 font-light">
+                            <span>魅</span>
+                            <span>力</span>
+                            <span class="font-thin text-[11px] opacity-70">|</span>
+                            <span>自</span>
+                            <span>成</span>
+                            <span>焦</span>
+                            <span>點</span>
+                        </div>
                     </div>
                 </div>
                 <img src="assets/logo.svg" alt="Volkswagen" class="w-[42px] h-[42px]">
