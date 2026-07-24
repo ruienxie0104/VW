@@ -146,7 +146,7 @@ async function generatePoster(state, genText) {
 
     // 5. 繪製標題文字 (THE ALL-NEW 空心框線 + T-ROC 實心白字)
     updateStatus('繪製標題與文字中...');
-    
+
     // 使用 Syncopate 標題英文字體
     ctx.font = 'bold 54px "Syncopate", "VWProductFont", sans-serif';
 
@@ -198,7 +198,7 @@ async function generatePoster(state, genText) {
     var featureY = 1270;
 
     var features = [
-        { title: '德式美學 自信展現', desc: '勇於展現自我，以鮮明設計成為眾人焦點', col: 1 },
+        { title: '德制工藝 自信展現', desc: '勇於展現自我，以鮮明設計成為眾人焦點', col: 1 },
         { title: '空間升級 舒適隨行', desc: '擁抱更多可能，如靈活空間滿足不同生活需求', col: 2 },
         { title: '風格獨特 魅力出眾', desc: '擁有獨特品味，辨識度十足展現獨特魅力', col: 1 },
         { title: '靈敏操控 駕馭樂趣', desc: '享受挑戰與突破，帶來靈活暢快的駕馭體驗', col: 2 },

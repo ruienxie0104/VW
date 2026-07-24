@@ -188,6 +188,15 @@ body {
     border-color: #c8401e !important;
 }
 
+select#form-dealer option {
+    font-weight: normal;
+    padding: 6px 10px;
+}
+
+select#form-dealer option:not([value=""]) {
+    font-weight: bold;
+}
+
 .form-error.show {
     display: block;
     animation: fadeIn 0.2s ease forwards;
